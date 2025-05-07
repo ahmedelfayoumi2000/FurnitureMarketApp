@@ -1,0 +1,47 @@
+﻿@model IEnumerable<FurnitureMarketApp.Application.DTOs.FurnitureItemDto>
+@{
+    ViewData["Title"] = "Furniture Items";
+}
+
+<div class="text-center">
+    <h2 class="welcome-title animate__animated animate__fadeInDown">Furniture Items</h2>
+    <p class="lead-text animate__animated animate__fadeInUp">
+        Browse all furniture items.
+    </p>
+    <hr class="divider" />
+    <p class="features">
+        Explore other sections:
+        <span class="feature-item"><a href="@Url.Action("Index", "Users")"><i class="fas fa-users"></i><strong>Users</strong></a></span>,
+        <span class="feature-item"><a href="@Url.Action("Index", "Offers")"><i class="fas fa-handshake"></i><strong>Offers</strong></a></span>,
+        <span class="feature-item"><a href="@Url.Action("Index", "Messages")"><i class="fas fa-envelope"></i><strong>Messages</strong></a></span>,
+        <span class="feature-item"><a href="@Url.Action("Index", "Favorites")"><i class="fas fa-heart"></i><strong>Favorites</strong></a></span>.
+    </p>
+    <a asp-action="Create" class="btn btn-custom animate__animated animate__fadeInUp mb-3">Add New Item</a>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr class="animate__animated animate__fadeIn">
+                        <td>@item.title</td>
+                        <td>@item.category</td>
+                        <td>@item.price</td>
+                        <td>
+                            <a asp-action="Details" asp-route-id="@item.ID" class="btn btn-custom btn-sm">Details</a>
+                            <a asp-action="Edit" asp-route-id="@item.ID" class="btn btn-custom btn-sm">Edit</a>
+                            <a asp-action="Delete" asp-route-id="@item.ID" class="btn btn-custom btn-sm">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

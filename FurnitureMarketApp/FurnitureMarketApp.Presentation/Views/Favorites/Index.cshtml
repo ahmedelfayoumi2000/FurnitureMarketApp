@@ -1,0 +1,47 @@
+﻿@model IEnumerable<FurnitureMarketApp.Application.DTOs.FavoriteDto>
+@{
+    ViewData["Title"] = "Favorites";
+}
+
+<div class="text-center">
+    <h2 class="welcome-title animate__animated animate__fadeInDown">Favorites</h2>
+    <p class="lead-text animate__animated animate__fadeInUp">
+        Manage all favorites in the market.
+    </p>
+    <hr class="divider" />
+    <p class="features">
+        Explore other sections:
+        <span class="feature-item"><a href="@Url.Action("Index", "Users")"><i class="fas fa-users"></i><strong>Users</strong></a></span>,
+        <span class="feature-item"><a href="@Url.Action("Index", "FurnitureItems")"><i class="fas fa-couch"></i><strong>Furniture</strong></a></span>,
+        <span class="feature-item"><a href="@Url.Action("Index", "Offers")"><i class="fas fa-handshake"></i><strong>Offers</strong></a></span>,
+        <span class="feature-item"><a href="@Url.Action("Index", "Messages")"><i class="fas fa-envelope"></i><strong>Messages</strong></a></span>.
+    </p>
+    <a asp-action="Create" class="btn btn-custom animate__animated animate__fadeInUp mb-3">Add New Favorite</a>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>User ID</th>
+                    <th>Item ID</th>
+                    <th>Name</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var favorite in Model)
+                {
+                    <tr class="animate__animated animate__fadeIn">
+                        <td>@favorite.ID_user</td>
+                        <td>@favorite.ID_item</td>
+                        <td>@favorite.name</td>
+                        <td>
+                            <a asp-action="Details" asp-route-id="@favorite.ID" class="btn btn-custom btn-sm">Details</a>
+                            <a asp-action="Edit" asp-route-id="@favorite.ID" class="btn btn-custom btn-sm">Edit</a>
+                            <a asp-action="Delete" asp-route-id="@favorite.ID" class="btn btn-custom btn-sm">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

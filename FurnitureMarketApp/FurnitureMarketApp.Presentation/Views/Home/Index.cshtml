@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="text-center">
+    <h2 class="welcome-title animate__animated animate__fadeInDown">Welcome to Furniture Market</h2>
+    <p class="lead-text animate__animated animate__fadeInUp">
+        Explore and trade furniture items.
+    </p>
+    <hr class="divider" />
+    <p class="features">
+        Check out:
+        <span class="feature-item"><a href="@Url.Action("Index", "Users")"><i class="fas fa-users"></i><strong>Users</strong></a></span>,
+        <span class="feature-item"><a href="@Url.Action("Index", "FurnitureItems")"><i class="fas fa-couch"></i><strong>Furniture</strong></a></span>,
+        <span class="feature-item"><a href="@Url.Action("Index", "Offers")"><i class="fas fa-handshake"></i><strong>Offers</strong></a></span>,
+        <span class="feature-item"><a href="@Url.Action("Index", "Messages")"><i class="fas fa-envelope"></i><strong>Messages</strong></a></span>,
+        <span class="feature-item"><a href="@Url.Action("Index", "Favorites")"><i class="fas fa-heart"></i><strong>Favorites</strong></a></span>.
+    </p>
+    <a class="btn btn-custom animate__animated animate__fadeInUp" asp-controller="FurnitureItems" asp-action="Index">Get Started</a>
+</div>

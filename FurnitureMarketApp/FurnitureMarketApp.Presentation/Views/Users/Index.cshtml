@@ -1,0 +1,47 @@
+﻿@model IEnumerable<FurnitureMarketApp.Application.DTOs.UserDto>
+@{
+    ViewData["Title"] = "Users";
+}
+
+<div class="text-center">
+    <h2 class="welcome-title animate__animated animate__fadeInDown">Users</h2>
+    <p class="lead-text animate__animated animate__fadeInUp">
+        Manage all users in the market.
+    </p>
+    <hr class="divider" />
+    <p class="features">
+        Explore other sections:
+        <span class="feature-item"><a href="@Url.Action("Index", "FurnitureItems")"><i class="fas fa-couch"></i><strong>Furniture</strong></a></span>,
+        <span class="feature-item"><a href="@Url.Action("Index", "Offers")"><i class="fas fa-handshake"></i><strong>Offers</strong></a></span>,
+        <span class="feature-item"><a href="@Url.Action("Index", "Messages")"><i class="fas fa-envelope"></i><strong>Messages</strong></a></span>,
+        <span class="feature-item"><a href="@Url.Action("Index", "Favorites")"><i class="fas fa-heart"></i><strong>Favorites</strong></a></span>.
+    </p>
+    <a asp-action="Create" class="btn btn-custom animate__animated animate__fadeInUp mb-3">Add New User</a>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in Model)
+                {
+                    <tr class="animate__animated animate__fadeIn">
+                        <td>@user.name</td>
+                        <td>@user.email</td>
+                        <td>@user.user_phone</td>
+                        <td>
+                            <a asp-action="Details" asp-route-id="@user.ID" class="btn btn-custom btn-sm">Details</a>
+                            <a asp-action="Edit" asp-route-id="@user.ID" class="btn btn-custom btn-sm">Edit</a>
+                            <a asp-action="Delete" asp-route-id="@user.ID" class="btn btn-custom btn-sm">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

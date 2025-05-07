@@ -1,0 +1,49 @@
+﻿@model FurnitureMarketApp.Application.DTOs.FavoriteDto
+@{
+    ViewData["Title"] = "Create Favorite";
+}
+
+<div class="text-center">
+    <h2 class="welcome-title animate__animated animate__fadeInDown">Create New Favorite</h2>
+    <p class="lead-text animate__animated animate__fadeInUp">
+        Add a new favorite to the market.
+    </p>
+    <hr class="divider" />
+    <p class="features">
+        Explore other sections: 
+        <span class="feature-item"><a href="@Url.Action("Index", "Users")"><i class="fas fa-users"></i><strong>Users</strong></a></span>, 
+        <span class="feature-item"><a href="@Url.Action("Index", "FurnitureItems")"><i class="fas fa-couch"></i><strong>Furniture</strong></a></span>, 
+        <span class="feature-item"><a href="@Url.Action("Index", "Offers")"><i class="fas fa-handshake"></i><strong>Offers</strong></a></span>, 
+        <span class="feature-item"><a href="@Url.Action("Index", "Messages")"><i class="fas fa-envelope"></i><strong>Messages</strong></a></span>.
+    </p>
+    <div class="card bg-transparent border-0">
+        <div class="card-body">
+            <form asp-action="Create" method="post">
+                @Html.AntiForgeryToken()
+                <div class="form-group mb-3">
+                    <label asp-for="ID_user" class="control-label animate__animated animate__fadeIn"></label>
+                    <input asp-for="ID_user" class="form-control" />
+                    <span asp-validation-for="ID_user" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <label asp-for="ID_item" class="control-label animate__animated animate__fadeIn"></label>
+                    <input asp-for="ID_item" class="form-control" />
+                    <span asp-validation-for="ID_item" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <label asp-for="name" class="control-label animate__animated animate__fadeIn"></label>
+                    <input asp-for="name" class="form-control" />
+                    <span asp-validation-for="name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-custom animate__animated animate__fadeInUp">Create</button>
+                    <a asp-action="Index" class="btn btn-custom animate__animated animate__fadeInUp">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+        <partial name="_ValidationScriptsPartial" />
+}

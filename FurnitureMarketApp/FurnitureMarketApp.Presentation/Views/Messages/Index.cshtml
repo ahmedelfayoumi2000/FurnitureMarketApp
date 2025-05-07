@@ -1,0 +1,47 @@
+﻿@model IEnumerable<FurnitureMarketApp.Application.DTOs.MessageDto>
+@{
+    ViewData["Title"] = "Messages";
+}
+
+<div class="text-center">
+    <h2 class="welcome-title animate__animated animate__fadeInDown">Messages</h2>
+    <p class="lead-text animate__animated animate__fadeInUp">
+        Manage all messages in the market.
+    </p>
+    <hr class="divider" />
+    <p class="features">
+        Explore other sections: 
+        <span class="feature-item"><a href="@Url.Action("Index", "Users")"><i class="fas fa-users"></i><strong>Users</strong></a></span>, 
+        <span class="feature-item"><a href="@Url.Action("Index", "FurnitureItems")"><i class="fas fa-couch"></i><strong>Furniture</strong></a></span>, 
+        <span class="feature-item"><a href="@Url.Action("Index", "Offers")"><i class="fas fa-handshake"></i><strong>Offers</strong></a></span>, 
+        <span class="feature-item"><a href="@Url.Action("Index", "Favorites")"><i class="fas fa-heart"></i><strong>Favorites</strong></a></span>.
+    </p>
+    <a asp-action="Create" class="btn btn-custom animate__animated animate__fadeInUp mb-3">Add New Message</a>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>User ID</th>
+                    <th>Date</th>
+                    <th>Content</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var message in Model)
+                {
+                        <tr class="animate__animated animate__fadeIn">
+                            <td>@message.ID_user</td>
+                            <td>@message.date</td>
+                            <td>@message.content</td>
+                            <td>
+                                <a asp-action="Details" asp-route-id="@message.ID" class="btn btn-custom btn-sm">Details</a>
+                                <a asp-action="Edit" asp-route-id="@message.ID" class="btn btn-custom btn-sm">Edit</a>
+                                <a asp-action="Delete" asp-route-id="@message.ID" class="btn btn-custom btn-sm">Delete</a>
+                            </td>
+                        </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
