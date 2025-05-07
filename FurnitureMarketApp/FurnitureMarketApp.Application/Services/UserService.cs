@@ -74,8 +74,21 @@ namespace FurnitureMarketApp.Application.Services
 
         public async Task DeleteAsync(int id)
         {
-            await _unitOfWork.Users.DeleteAsync(id);
-            await _unitOfWork.SaveChangesAsync();
+            var user = await _unitOfWork.Users.GetByIdAsync(id);
+            if (user == null)
+            {
+                throw new Exception($"User with ID {id} not found.");
+            }
+
+            try
+            {
+                await _unitOfWork.Users.DeleteAsync(id);
+                await _unitOfWork.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error deleting user with ID {id}: {ex.Message}", ex);
+            }
         }
     }
 }

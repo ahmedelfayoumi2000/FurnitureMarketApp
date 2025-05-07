@@ -1,0 +1,33 @@
+﻿@model FurnitureMarketApp.Application.DTOs.UserDto
+@{
+    ViewData["Title"] = "User Details";
+}
+
+<div class="text-center">
+    <h2 class="welcome-title animate__animated animate__fadeInDown">User Details</h2>
+    <p class="lead-text animate__animated animate__fadeInUp">
+        View details of this user.
+    </p>
+    <hr class="divider" />
+    <p class="features">
+        Explore other sections:
+        <span class="feature-item"><a href="@Url.Action("Index", "FurnitureItems")"><i class="fas fa-couch"></i><strong>Furniture</strong></a></span>,
+        <span class="feature-item"><a href="@Url.Action("Index", "Offers")"><i class="fas fa-handshake"></i><strong>Offers</strong></a></span>,
+        <span class="feature-item"><a href="@Url.Action("Index", "Messages")"><i class="fas fa-envelope"></i><strong>Messages</strong></a></span>,
+        <span class="feature-item"><a href="@Url.Action("Index", "Favorites")"><i class="fas fa-heart"></i><strong>Favorites</strong></a></span>.
+    </p>
+    <div class="card bg-transparent border-0">
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-2 animate__animated animate__fadeIn">Name</dt>
+                <dd class="col-sm-10 animate__animated animate__fadeIn">@Model.name</dd>
+                <dt class="col-sm-2 animate__animated animate__fadeIn">Email</dt>
+                <dd class="col-sm-10 animate__animated animate__fadeIn">@Model.email</dd>
+                <dt class="col-sm-2 animate__animated animate__fadeIn">Phone</dt>
+                <dd class="col-sm-10 animate__animated animate__fadeIn">@Model.user_phone</dd>
+            </dl>
+            <a asp-action="Index" class="btn btn-custom animate__animated animate__fadeInUp">Back to List</a>
+            <a asp-action="Edit" asp-route-id="@Model.ID" class="btn btn-custom animate__animated animate__fadeInUp">Edit</a>
+        </div>
+    </div>
+</div>

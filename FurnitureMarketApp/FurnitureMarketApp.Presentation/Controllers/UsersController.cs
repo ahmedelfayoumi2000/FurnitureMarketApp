@@ -73,8 +73,18 @@ namespace FurnitureMarketApp.Presentation.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            await _userService.DeleteAsync(id);
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                await _userService.DeleteAsync(id);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", $"Error deleting user: {ex.Message}");
+                var user = await _userService.GetByIdAsync(id);
+                if (user == null) return NotFound();
+                return View(user);
+            }
         }
     }
 }
